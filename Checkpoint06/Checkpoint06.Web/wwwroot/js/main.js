@@ -12,10 +12,10 @@
             url: "/api/bird/addobservation",
             method: "POST",
             data: {
-                time: time,
-                species: species,
-                location: location,
-                notes: notes
+                Time: time,
+                Species: species,
+                Location: location,
+                Notes: notes
             }
         })
         .done(function (result) {
@@ -38,8 +38,7 @@
             method: "GET"
         })
         .done(function (result) {
-            myList = result;
-            document.getElementById("allSpecies").innerHTML = result;
+            document.getElementById("species").innerHTML = result;
             console.log("Success", result);
         })
         .fail(function (xhr, status, error) {

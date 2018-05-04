@@ -34,7 +34,7 @@ namespace Checkpoint06.Api
             try
             {
                 List<string> allSpecies = _birdRepository.GetAllSpecies();
-                return Ok(string.Join('\n', allSpecies));
+                return  Ok(string.Join("<br>",allSpecies));
             }
             catch (Exception e)
             {
