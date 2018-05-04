@@ -1,4 +1,5 @@
-﻿using Checkpoint06.Web.Models;
+﻿using Checkpoint06.Domain.Interfaces;
+using Checkpoint06.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ namespace Checkpoint06.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddEntityFrameworkSqlite().AddDbContext<ObservationContext>();
+            services.AddSingleton<IBirdRepository, BirdRepository>();
             services.AddMvc();
         }
 

@@ -6,8 +6,28 @@
 </head>
 <body>
     <h1>Fågelskådning</h1>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="/js/main.js"></script>
-
+    <h3>Lägg till observation</h3>
+    <form id="addForm">
+        Datum<br />
+        <input name="time" type="text" value="" /><br />
+        Art<br />
+        <input name="species" type="text" value="" /><br />
+        Plats<br />
+        <input name="location" type="text" value="" /><br />
+        Anteckningar<br />
+        <input name="notes" type="text" value="" /><br />
+        <input type="button" id="addButton" value="Ok" />
+    </form>
+    <br />
+    <h3>Visa alla observationer</h3>
+    <button id="showObservations">Ok</button>
+    <br />
+    <h3>AllaObservationer</h3>
+<table id="observationsDataTable"></table>
+<h3>Alla arter</h3>
+<div id="allSpecies"></div>
+    
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>
