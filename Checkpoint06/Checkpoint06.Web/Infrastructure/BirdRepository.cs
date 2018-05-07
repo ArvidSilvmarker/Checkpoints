@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using Checkpoint06.Domain;
@@ -9,7 +10,7 @@ namespace Checkpoint06.Infrastructure
 {
     public class BirdRepository : IBirdRepository
     {
-        private ObservationContext _context = new ObservationContext();
+        private readonly ObservationContext _context = new ObservationContext();
 
         public int AddObservation(Observation bird)
         {
@@ -20,7 +21,9 @@ namespace Checkpoint06.Infrastructure
 
         public List<string> GetAllSpecies()
         {
-            return _context.Observations.Select(b => b.Species).Distinct().ToList();
+            var allSpecies = _context.Observations.Select(b => b.Species).Distinct().ToList();
+            allSpecies.Sort();
+            return allSpecies;
         }
 
         public List<Observation> GetAllObservations()

@@ -4,25 +4,25 @@
     <title>Fågelskådning</title>
 
 </head>
-<body>
+<body onload="onLoad()">
     <h1>Fågelskådning</h1>
     <h3>Lägg till observation</h3>
-    <form id="addForm">
+    <div id="addForm">
         Datum<br />
-        <input name="time" type="text" value="" /><br />
+        <input id="time" type="text" value="" /><br />
         Art<br />
-        <input name="species" type="text" value="" /><br />
+        <input id="species" type="text" value="" /><br />
         Plats<br />
-        <input name="location" type="text" value="" /><br />
+        <input id="location" type="text" value="" /><br />
         Anteckningar<br />
-        <input name="notes" type="text" value="" /><br />
-        <input type="button" id="addButton" value="Ok" />
-    </form>
+        <input id="notes" type="text" value="" /><br />
+        <button id="addButton">OK</button>
+    </div>
     <br />
     <h3>AllaObservationer</h3>
 <table id="observationsDataTable"></table>
 <h3>Alla arter</h3>
-<div id="species"></div>
+<div id="allSpecies"></div>
     
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 <script src="/js/main.js"></script>

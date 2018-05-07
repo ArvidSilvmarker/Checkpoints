@@ -1,5 +1,4 @@
 ﻿
-//$(document).ready(function () {
     var myList;
 
     $("#addButton").click(function () {
@@ -31,15 +30,18 @@
         });
     });
 
-    function showSpecies () {
+function onLoad() {
+    showSpecies();
+    showObservations();
+}
 
+    function showSpecies () {
         $.ajax({
             url: "/api/bird/getallspecies",
             method: "GET"
         })
         .done(function (result) {
-            document.getElementById("species").innerHTML = result;
-            console.log("Success", result);
+            $("#allSpecies").html(result);
         })
         .fail(function (xhr, status, error) {
             alert(`Error! ${xhr.responseText}`);
@@ -78,7 +80,7 @@
             var row$ = $('<tr/>');
             for (var colIndex = 0; colIndex < columns.length; colIndex++) {
                 var cellValue = myList[i][columns[colIndex]];
-                if (cellValue == null) cellValue = "";
+                if (cellValue === null) cellValue = "";
                 row$.append($('<td/>').html(cellValue));
             }
             $(selector).append(row$);
@@ -95,7 +97,7 @@
         for (var i = 0; i < myList.length; i++) {
             var rowHash = myList[i];
             for (var key in rowHash) {
-                if ($.inArray(key, columnSet) == -1) {
+                if ($.inArray(key, columnSet) === -1) {
                     columnSet.push(key);
                     headerTr$.append($('<th/>').html(key));
                 }
@@ -106,5 +108,5 @@
         return columnSet;
     }
 
-//});
+
 
