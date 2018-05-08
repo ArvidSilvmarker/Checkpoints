@@ -52,40 +52,43 @@ function onLoad() {
     }
 
     function showObservations() {
-
+        
         $.ajax({
-                url: "/api/bird/getallobservations",
-                method: "GET"
-            })
-            .done(function (result) {
-                myList = result;
-                buildHtmlTable("#observationsDataTable");
-                console.log("Success", result);
-            })
-            .fail(function (xhr, status, error) {
-                alert(`Error! ${xhr.responseText}`);
-                console.log("xhr", xhr);
-                console.log("status", status);
-                console.log("error", error);
-            });
+            url: "/api/bird/getallobservations",
+            method: "GET"
+        })
+        .done(function (result) {
+            myList = result;
+            buildHtmlTable("#observationsDataTable");
+            console.log("Success", result);
+        })
+        .fail(function (xhr, status, error) {
+            alert(`Error! ${xhr.responseText}`);
+            console.log("xhr", xhr);
+            console.log("status", status);
+            console.log("error", error);
+        });
     }
 
 
 
     // Builds the HTML Table out of myList.
-    function buildHtmlTable(selector) {
-        var columns = addAllColumnHeaders(myList, selector);
+function buildHtmlTable(selector) {
+    var table = $(selector);
+    table.html("");
 
-        for (var i = 0; i < myList.length; i++) {
-            var row$ = $('<tr/>');
-            for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-                var cellValue = myList[i][columns[colIndex]];
-                if (cellValue === null) cellValue = "";
-                row$.append($('<td/>').html(cellValue));
-            }
-            $(selector).append(row$);
+    var columns = addAllColumnHeaders(myList, selector);
+
+    for (var i = 0; i < myList.length; i++) {
+        var row$ = $('<tr/>');
+        for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+            var cellValue = myList[i][columns[colIndex]];
+            if (cellValue === null) cellValue = "";
+            row$.append($('<td/>').html(cellValue));
         }
+        $(selector).append(row$);
     }
+}
 
     // Adds a header row to the table and returns the set of columns.
     // Need to do union of keys from all records as some records may not contain
